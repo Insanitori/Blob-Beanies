@@ -236,6 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e1c43929b116fa46b19d4d24687e814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  board: {fileID: 0}
 --- !u!4 &671892620
 Transform:
   m_ObjectHideFlags: 0
@@ -295,9 +296,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2ae520e892fe2e4b8aa1323a3a33903, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentState: 1
   width: 8
   height: 10
+  offSet: 20
   tilePrefab: {fileID: 3307684212942368747, guid: cc8a5f57677f97340ac230ba4043e8ea, type: 3}
+  damageCheck: 0
   slimes:
   - {fileID: 888463715628334270, guid: 9c2ec3700887a0f4aa2d88f5eea10ee9, type: 3}
   - {fileID: 4504840049080762955, guid: 5c0c0873797725e46baadcce230ea06a, type: 3}

@@ -23,11 +23,11 @@ public class Slime : MonoBehaviour
         selected = false;
         board = FindObjectOfType<Board>();
 
-        targetX = (int)transform.position.x;
+        /*targetX = (int)transform.position.x;
         targetY = (int)transform.position.y;
 
         row = targetY;
-        column = targetX;
+        column = targetX;*/
     }
 
     // Update is called once per frame
@@ -39,25 +39,33 @@ public class Slime : MonoBehaviour
         if(Mathf.Abs(targetX - transform.position.x) > .1)
         {
             temp = new Vector2(targetX, transform.position.y);
-            transform.position = Vector2.Lerp(transform.position, temp, .4f);
+            transform.position = Vector2.Lerp(transform.position, temp, .2f);
+            
+            if (board.everyslime[column,row] != this.gameObject)
+            {
+                board.everyslime[column,row] = this.gameObject;
+            }
         }
         else
         {
             temp = new Vector2(targetX, transform.position.y);
             transform.position = temp;
-            board.everyslime[column, row] = this.gameObject;
         }
         
         if(Mathf.Abs(targetY - transform.position.y) > .1)
         {
             temp = new Vector2(transform.position.x, targetY);
-            transform.position = Vector2.Lerp(transform.position, temp, .4f);
+            transform.position = Vector2.Lerp(transform.position, temp, .2f);
+
+            if (board.everyslime[column, row] != this.gameObject)
+            {
+                board.everyslime[column, row] = this.gameObject;
+            }
         }
         else
         {
             temp = new Vector2(transform.position.x, targetY);
             transform.position = temp;
-            board.everyslime[column, row] = this.gameObject;
         }
 
         if(selected)
