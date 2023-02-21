@@ -5,12 +5,15 @@ using UnityEngine;
 public class Board : MonoBehaviour
 {
     // Start is called before the first frame update
+    
 
     public int width;
     public int height;
     private BackgroundTile[,] allTiles;
 
     public GameObject tilePrefab;
+
+    public bool damageCheck;
 
     public GameObject[] slimes;
     public GameObject[,] everyslime;
@@ -20,8 +23,19 @@ public class Board : MonoBehaviour
         allTiles = new BackgroundTile[width, height];
         everyslime = new GameObject[width, height];
         SetUp();
+
+        damageCheck = false;
     }
-    
+
+    void Update()
+    {
+        if (damageCheck)
+        {
+            StartCoroutine(DecreaseRow());
+            
+        }
+    }
+
 
     private void SetUp()
     {
@@ -43,5 +57,27 @@ public class Board : MonoBehaviour
         }
     }
 
-    
+    private IEnumerator DecreaseRow()
+    {
+        int nullCount = 0;
+
+        for (int i = 0; i < width; i++)
+        {
+            for(int j = 0; j < height; j++)
+            {
+                if(everyslime[i, j] == null)
+                {
+                    nullCount++;
+                }
+                else if (nullCount > 0)
+                {
+                    everyslime[i,j].GetComponent<Slime>().row -= nullCount;
+                }
+                damageCheck = false;
+            }
+            nullCount = 0;
+        }
+
+        yield return new WaitForSeconds(1);
+    }
 }

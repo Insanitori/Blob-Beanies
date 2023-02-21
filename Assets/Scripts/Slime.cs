@@ -8,15 +8,58 @@ public class Slime : MonoBehaviour
 
     public bool selected;
 
-    private Vector2[] adjacentDirections = new Vector2[] { Vector2.up, Vector2.down, Vector2.left, Vector2.right, Vector2.up };
+    public int column;
+    public int row;
+    public int targetX;
+    public int targetY;
+
+    private Vector2 temp;
+
+    public Board board;
+
+    private Vector2[] adjacentDirections = new Vector2[] { Vector2.up, Vector2.down, Vector2.left, Vector2.right};
     void Start()
     {
         selected = false;
+        board = FindObjectOfType<Board>();
+
+        targetX = (int)transform.position.x;
+        targetY = (int)transform.position.y;
+
+        row = targetY;
+        column = targetX;
     }
 
     // Update is called once per frame
     void Update()
     {
+        targetX = column;
+        targetY = row;
+
+        if(Mathf.Abs(targetX - transform.position.x) > .1)
+        {
+            temp = new Vector2(targetX, transform.position.y);
+            transform.position = Vector2.Lerp(transform.position, temp, .4f);
+        }
+        else
+        {
+            temp = new Vector2(targetX, transform.position.y);
+            transform.position = temp;
+            board.everyslime[column, row] = this.gameObject;
+        }
+        
+        if(Mathf.Abs(targetY - transform.position.y) > .1)
+        {
+            temp = new Vector2(transform.position.x, targetY);
+            transform.position = Vector2.Lerp(transform.position, temp, .4f);
+        }
+        else
+        {
+            temp = new Vector2(transform.position.x, targetY);
+            transform.position = temp;
+            board.everyslime[column, row] = this.gameObject;
+        }
+
         if(selected)
         {
             GetAllAdjacentTiles();
@@ -71,6 +114,7 @@ public class Slime : MonoBehaviour
     private IEnumerator delay()
     {
         yield return new WaitForSeconds(1);
+        board.damageCheck = true;
         Destroy(gameObject);
     }
 }
