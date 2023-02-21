@@ -18,6 +18,7 @@ public class Slime : MonoBehaviour
 
     public Board board;
     public ScoreManager scoreManager;
+    public Timer timer;
 
     private Vector2[] adjacentDirections = new Vector2[] { Vector2.up, Vector2.down, Vector2.left, Vector2.right};
     void Start()
@@ -25,6 +26,7 @@ public class Slime : MonoBehaviour
         selected = false;
         board = FindObjectOfType<Board>();
         scoreManager = FindObjectOfType<ScoreManager>();
+        timer = FindObjectOfType<Timer>();
 
         /*targetX = (int)transform.position.x;
         targetY = (int)transform.position.y;
@@ -126,7 +128,9 @@ public class Slime : MonoBehaviour
 
     private IEnumerator delay()
     {
+        
         yield return new WaitForSeconds(1);
+        timer.moreTime++;
         scoreManager.holder++;
         board.damageCheck = true;
         Destroy(gameObject);

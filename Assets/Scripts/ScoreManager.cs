@@ -10,13 +10,9 @@ public class ScoreManager : MonoBehaviour
     private int multiplier;
 
     public TextMeshProUGUI ScoreNumber;
-
-    public Timer timer;
     // Start is called before the first frame update
     void Start()
     {
-        timer = FindObjectOfType<Timer>();
-
         holder = 0;
         multiplier = 0;
     }
@@ -24,7 +20,7 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        multiplier = holder * 110;
+        multiplier = holder * 112;
 
         ScoreNumber.text = "Score: " + multiplier;
     }
