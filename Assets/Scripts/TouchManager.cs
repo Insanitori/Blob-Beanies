@@ -8,9 +8,11 @@ public class TouchManager : MonoBehaviour
 
     private Vector2 startPos;
     public Board board;
+    public Timer timer;
     void Start()
     {
         board = FindObjectOfType<Board>();
+        timer = FindObjectOfType<Timer>();
     }
 
     // Update is called once per frame
@@ -21,6 +23,7 @@ public class TouchManager : MonoBehaviour
         {
             if (Input.touchCount > 0)
             {
+                timer.gameStart = true;
                 startPos = Input.touches[0].position;
                 //let's check if the touch is a new touch
                 //there are a few different phases that touch moves through
@@ -34,7 +37,7 @@ public class TouchManager : MonoBehaviour
                 if (hit.collider != null)
                 {
                     Debug.Log(hit.collider.gameObject.tag);
-
+                    timer.lessTime += .00002f;
                     hit.collider.gameObject.GetComponent<Slime>().selected = true;
                     StartCoroutine(waiting());
                 }

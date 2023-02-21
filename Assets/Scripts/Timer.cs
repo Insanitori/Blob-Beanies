@@ -9,10 +9,14 @@ public class Timer : MonoBehaviour
     public float maxTime = 5f;
     float timeLeft;
     public GameObject timesupText;
+    public GameObject GameStarting;
+    public GameObject GameAhh;
 
     public int moreTime;
-    private float lessTime;
-    private float offsetting;
+    public float lessTime;
+
+    public bool gameStart;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -22,33 +26,39 @@ public class Timer : MonoBehaviour
 
         moreTime = 0;
         lessTime = 0;
-        offsetting = 1;
+
+        gameStart = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(timeLeft > 0)
+        if (gameStart)
         {
-            timeLeft += moreTime;
-            moreTime = 0;
-            timeLeft -= Time.deltaTime + lessTime;
-            timebar.fillAmount = timeLeft / maxTime;
-        }
-        else if (timeLeft > maxTime){
-            timeLeft = maxTime;
+            GameStarting.SetActive(false);
+            GameAhh.SetActive(false);
+            if (timeLeft > 0)
+            {
+                if (timeLeft > maxTime)
+                {
+                    timeLeft = maxTime;
+                }
+
+                timeLeft += moreTime;
+                moreTime = 0;
+                timeLeft -= Time.deltaTime + lessTime;
+                timebar.fillAmount = timeLeft / maxTime;
+            }
+            else
+            {
+                timesupText.SetActive(true);
+                Time.timeScale = 0;
+            }
         }
         else
         {
-            timesupText.SetActive(true);
-            Time.timeScale = 0;
+            GameStarting.SetActive(true);
+            GameAhh.SetActive(true);
         }
-    }
-
-    private IEnumerator difficulty()
-    {
-        yield return new WaitForSeconds(10);
-        lessTime = .002f * offsetting;
-        offsetting++;
     }
 }

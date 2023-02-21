@@ -104,6 +104,7 @@ public class Board : MonoBehaviour
                     everyslime[i, j] = piece;
                     piece.GetComponent<Slime>().row = j;
                     piece.GetComponent<Slime>().column = i;
+                    piece.transform.parent = this.transform;
                 }
             } 
         }
