@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - BlobSlime
+  - PopSlime
+  - DragonSlime
+  - NinjaSlime
+  - AppleSlime
+  - BunnySlime
   layers:
   - Default
   - TransparentFX
