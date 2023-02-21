@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 
 public class Slime : MonoBehaviour
@@ -16,12 +17,14 @@ public class Slime : MonoBehaviour
     private Vector2 temp;
 
     public Board board;
+    public ScoreManager scoreManager;
 
     private Vector2[] adjacentDirections = new Vector2[] { Vector2.up, Vector2.down, Vector2.left, Vector2.right};
     void Start()
     {
         selected = false;
         board = FindObjectOfType<Board>();
+        scoreManager = FindObjectOfType<ScoreManager>();
 
         /*targetX = (int)transform.position.x;
         targetY = (int)transform.position.y;
@@ -106,6 +109,8 @@ public class Slime : MonoBehaviour
             }
 
         }
+
+        
         return null;
     }
 
@@ -115,13 +120,14 @@ public class Slime : MonoBehaviour
         for (int i = 0; i < adjacentDirections.Length; i++)
         {
             adjacentTiles.Add(GetAdjacent(adjacentDirections[i]));
-        }
+}
         return adjacentTiles;
     }
 
     private IEnumerator delay()
     {
         yield return new WaitForSeconds(1);
+        scoreManager.holder++;
         board.damageCheck = true;
         Destroy(gameObject);
     }
