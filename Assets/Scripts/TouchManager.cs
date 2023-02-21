@@ -32,6 +32,8 @@ public class TouchManager : MonoBehaviour
             if (hit.collider != null)
             {
                 Debug.Log(hit.collider.gameObject.tag);
+
+                hit.collider.gameObject.GetComponent<Slime>().selected = true;
             }
         }
     }
