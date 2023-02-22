@@ -219,8 +219,8 @@ RectTransform:
   m_Children:
   - {fileID: 2063722079}
   - {fileID: 2093660947}
-  - {fileID: 474113243}
   - {fileID: 1049372571}
+  - {fileID: 474113243}
   - {fileID: 423320840}
   - {fileID: 1302327698}
   - {fileID: 1751791702}
@@ -787,12 +787,12 @@ RectTransform:
   m_Children:
   - {fileID: 1587282448}
   m_Father: {fileID: 32432381}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 8.75769, y: 0}
-  m_SizeDelta: {x: 975.5154, y: 419.7226}
+  m_AnchoredPosition: {x: 124.36, y: 257}
+  m_SizeDelta: {x: 1533.9, y: 861.96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &474113244
 MonoBehaviour:
@@ -814,7 +814,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tap Screen to Start!
+  m_text: 'Tap Screen to Start!
+
+
+    Tap Blobs to Win!
+
+
+    Careful of the Timer!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -841,8 +847,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 212.44
-  m_fontSizeBase: 212.44
+  m_fontSize: 171
+  m_fontSizeBase: 171
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -877,7 +883,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 234.05762, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1716,7 +1722,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 32432381}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2847,11 +2853,11 @@ RectTransform:
   m_Father: {fileID: 32432381}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 472.40747, y: -1147.9548}
-  m_SizeDelta: {x: 373.1852, y: 164.0906}
-  m_Pivot: {x: 0.5, y: 0.49999988}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -61, y: 60}
+  m_SizeDelta: {x: 373.18518, y: 164.09058}
+  m_Pivot: {x: 1, y: 0}
 --- !u!114 &1751791703
 MonoBehaviour:
   m_ObjectHideFlags: 0

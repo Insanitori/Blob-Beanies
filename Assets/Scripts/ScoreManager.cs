@@ -24,7 +24,8 @@ public class ScoreManager : MonoBehaviour
         holder = 0;
         multiplier = 0;
         timer = FindObjectOfType<Timer>();
-        highscore = PlayerPrefs.GetInt("highScore");
+        //highscore = PlayerPrefs.GetInt("highScore");
+        highscore = 0;
         another = highscore;
 
         New.text = "";
