@@ -20,6 +20,8 @@ public class Slime : MonoBehaviour
     public ScoreManager scoreManager;
     public Timer timer;
 
+    public AudioPlayer audioSource;
+
     private Vector2[] adjacentDirections = new Vector2[] { Vector2.up, Vector2.down, Vector2.left, Vector2.right};
     void Start()
     {
@@ -27,6 +29,7 @@ public class Slime : MonoBehaviour
         board = FindObjectOfType<Board>();
         scoreManager = FindObjectOfType<ScoreManager>();
         timer = FindObjectOfType<Timer>();
+        audioSource = FindObjectOfType<AudioPlayer>();
 
         /*targetX = (int)transform.position.x;
         targetY = (int)transform.position.y;
@@ -133,6 +136,7 @@ public class Slime : MonoBehaviour
         timer.moreTime++;
         scoreManager.holder++;
         board.damageCheck = true;
+        audioSource.po = true;
         Destroy(gameObject);
     }
 }

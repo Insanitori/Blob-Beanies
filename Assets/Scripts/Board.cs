@@ -32,6 +32,8 @@ public class Board : MonoBehaviour
         SetUp();
 
         damageCheck = false;
+
+        currentState = GameState.move;
     }
 
     void Update()

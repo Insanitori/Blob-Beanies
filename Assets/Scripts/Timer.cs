@@ -16,7 +16,10 @@ public class Timer : MonoBehaviour
     public float lessTime;
 
     public bool gameStart;
-    
+    public bool gameStop;
+
+    public Board board;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,37 +31,44 @@ public class Timer : MonoBehaviour
         lessTime = 0;
 
         gameStart = false;
+        gameStop = false;
+
+        board = FindObjectOfType<Board>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (gameStart)
+        if (board.currentState == GameState.move)
         {
-            GameStarting.SetActive(false);
-            GameAhh.SetActive(false);
-            if (timeLeft > 0)
+            if (gameStart)
             {
-                if (timeLeft > maxTime)
+                GameStarting.SetActive(false);
+                GameAhh.SetActive(false);
+                if (timeLeft > 0)
                 {
-                    timeLeft = maxTime;
-                }
+                    if (timeLeft > maxTime)
+                    {
+                        timeLeft = maxTime;
+                    }
 
-                timeLeft += moreTime;
-                moreTime = 0;
-                timeLeft -= Time.deltaTime + lessTime;
-                timebar.fillAmount = timeLeft / maxTime;
+                    timeLeft += moreTime;
+                    moreTime = 0;
+                    timeLeft -= Time.deltaTime + lessTime;
+                    timebar.fillAmount = timeLeft / maxTime;
+                }
+                else
+                {
+                    timesupText.SetActive(true);
+                    timeLeft = 0;
+                    gameStop = true;
+                }
             }
             else
             {
-                timesupText.SetActive(true);
-                Time.timeScale = 0;
+                GameStarting.SetActive(true);
+                GameAhh.SetActive(true);
             }
-        }
-        else
-        {
-            GameStarting.SetActive(true);
-            GameAhh.SetActive(true);
         }
     }
 }
