@@ -10,6 +10,7 @@ TagManager:
   - NinjaSlime
   - AppleSlime
   - BunnySlime
+  - Bounds
   layers:
   - Default
   - TransparentFX
