@@ -37,7 +37,7 @@ public class TouchManager : MonoBehaviour
                 if (hit.collider != null)
                 {
                     Debug.Log(hit.collider.gameObject.tag);
-                    timer.lessTime += .00002f;
+                    timer.lessTime += .00009f;
                     hit.collider.gameObject.GetComponent<Slime>().selected = true;
                     StartCoroutine(waiting());
                 }
